@@ -28,8 +28,22 @@ var chartGroup = svg.append("g")
 d3.csv("assets/data/data.csv").then(function (stateData) {
     console.log(stateData);
 
-// Parse Data/Cast as numbers
+    // Parse Data/Cast as numbers
     stateData.forEach(function (data) {
         data.poverty = +data.poverty;
         data.healthcare = +data.healthcare;
     });
+
+    // Create scale functions
+    var xLinearScale = d3.scaleLinear()
+      .domain([0, d3.max(stateData, d => d.poverty)])
+      .range([0, width]);
+
+    var yLinearScale = d3.scaleLinear()
+      .domain([0, d3.max(stateData, d => d.healthcare)])
+      .range([height, 0]);
+
+    // Create axis functions
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
