@@ -82,4 +82,31 @@ d3.csv("assets/data/data.csv").then(function (stateData) {
         toolTip.show(data, this);
       })
 
+    // on mouseout event
+      .on("mouseout", function(data, index) {
+        toolTip.hide(data);
+      });
+      
+    // Create axes labels
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 40)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "1em")
+        .attr("class", "axisText")
+        .style("fill", "black")
+        .style("font", "20px sans-serif")
+        .style("font-weight", "bold")
+        .text("Lacks Healthcare (%)");
+
+    chartGroup.append("text")
+        .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+        .attr("class", "axisText")
+        .style("font", "20px sans-serif")
+        .style("font-weight", "bold")
+        .text("In Poverty (%)");
+
+    }).catch(function (error) {
+    console.log(error);
+
 });
