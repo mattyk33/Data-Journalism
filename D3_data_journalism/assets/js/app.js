@@ -74,4 +74,12 @@ d3.csv("assets/data/data.csv").then(function (stateData) {
         return (`${d.state}<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}`);
     });
 
+    // Create tooltip in the chart
+    chartGroup.call(toolTip);
+
+    // Create event listeners to display and hide the tooltip
+    circlesGroup.on("click", function(data) {
+        toolTip.show(data, this);
+      })
+
 });
