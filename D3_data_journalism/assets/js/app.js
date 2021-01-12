@@ -63,8 +63,8 @@ d3.csv("assets/data/data.csv").then(function (stateData) {
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", "12")
-    .attr("fill", "blue")
-    .attr("opacity", ".5"); 
+    .classed("stateCircle", true)
+    .attr("opacity", ".75"); 
 
     // Initialize tool tip
     var toolTip = d3.tip()
@@ -86,7 +86,26 @@ d3.csv("assets/data/data.csv").then(function (stateData) {
       .on("mouseout", function(data, index) {
         toolTip.hide(data);
       });
-      
+
+    // Add text to each circle
+    chartGroup.append("g")
+        .selectAll('#circleText')
+        .data(stateData)
+        .enter()
+        .append("text")
+        .text(d=>d.abbr)
+        .attr("id", "circleText")
+        .attr("x",d=>xLinearScale(d.poverty))
+        .attr("y",d=>yLinearScale(d.healthcare))
+        .classed(".stateText", true)
+        .attr("font-family", "sans-serif")
+        .attr("text-anchor", "middle")
+        .attr("stroke-width", "1")
+        .attr("fill", "white")
+        .attr("font-size", 8)
+        .style("font-weight", "bold")
+        .attr("alignment-baseline", "central");
+
     // Create axes labels
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
