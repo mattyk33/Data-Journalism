@@ -12,7 +12,7 @@ The data set included with the assignment is based on 2014 ACS 1-year estimates 
 
 ## Your Task
 
-### Core Assignment: D3 Dabbler (Required Assignment)
+### Core Assignment: D3 Dabbler
 
 ![4-scatter](D3_data_journalism/Images/4-scatter.jpg)
 
@@ -28,7 +28,7 @@ Using the D3 techniques we taught you in class, create a scatter plot that repre
 
 - - -
 
-### Bonus: Impress the Boss (Optional Assignment)
+### Impress the Boss
 
 Why make a static graphic when D3 lets you interact with your data?
 
